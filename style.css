@@ -1,0 +1,261 @@
+/* Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    background-color: #333; /* Adjust as needed */
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px; /* Adjust as needed */
+    background-image: url('background.jpg'); /* Ensure this points to your image */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    color: white;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8); /* Adds a dark shadow overlay for better text visibility */
+}
+
+/* Header Content Layout */
+.header-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    z-index: 2; /* Ensures content stays above any overlays */
+    padding: 0 20px; /* Added padding for better alignment */
+}
+
+/* Football Logo on the Left */
+.football-logo img {
+    width: 120px; /* Increased size for better visibility */
+    height: auto;
+    position: absolute;
+    left: 20px;
+    top: 30%;
+    transform: translateY(-50%);
+    filter: drop-shadow(3px 3px 10px rgba(0, 0, 0, 0.8)); /* Adds shadow to the logo for better visibility */
+}
+
+/* Song Title in the Center */
+.song-title {
+    text-align: center;
+    color: rgb(1, 250, 55); /* Light color for better visibility */
+    font-family: 'Ewert', cursive;
+    text-shadow: 6px 6px 15px rgba(0, 0, 0, 0.9); /* Refined shadow to complement the background */
+    letter-spacing: 1.5px;
+    z-index: 2;
+}
+
+/* Larger title with focus */
+.song-title h1 {
+    font-size: 3.5em; /* Increased size for emphasis */
+    font-weight: bold; /* Make the text bold */
+    margin-bottom: 5px;
+    text-shadow: 6px 6px 20px rgba(0, 0, 0, 0.8); /* Stronger shadow for emphasis */
+}
+
+/* Subtitle styling */
+.song-title p {
+    font-size: 2.9em; /* Increased size for emphasis */
+    color: #eef367; /* A gold-like color to match the theme */
+    text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.9); /* Adds a strong shadow to lift it off the background */
+    letter-spacing: 1.2px;
+}
+
+/* Background Overlay to make text stand out */
+.header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2); /* Dark overlay to make text pop */
+    z-index: 1; /* Places the overlay behind the content */
+}
+
+/* Video and Images Section */
+.media-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.side-image {
+    width: 450px; /* Match video width */
+    height: 315px; /* Match video height */
+    object-fit: cover; /* Ensures images cover the area without distortion */
+}
+
+.extra-image {
+    width: 460px; /* Ensure size matches */
+    height: 315px; /* Ensure size matches */
+    object-fit: cover;
+}
+
+/* Ensure proper spacing between images and video */
+.media-section img:not(.extra-image) {
+    margin: 0 10px; /* Adjust spacing as needed */
+}
+
+.media-section video {
+    margin: 0 10px; /* Adjust spacing as needed */
+}
+
+/* Lyrics Section */
+.lyrics-container {
+    position: relative;
+    width: 90%; /* Match video width */
+    height: 400px; /* Match video height */
+    margin: 0 auto;
+}
+
+.lyrics-background {
+    background-image: url('worldcup.webp'); /* Ensure this points to your image */
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Place background image behind lyrics */
+    opacity: 0.7; /* Slightly transparent to let lyrics stand out */
+}
+
+
+.lyrics {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 2; /* Place lyrics above background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    text-align: center;
+    overflow: hidden;
+    font-family: 'Permanent Marker', cursive; /* Use linked font */
+    background: linear-gradient(45deg, #f39c12, #e74c3c, #9b59b6); /* Shiny gradient background */
+    -webkit-background-clip: text; /* Clip the gradient to the text */
+    background-clip: text;
+    color: transparent; /* Make the text color transparent to show the gradient */
+    text-shadow: 
+        0 0 3px rgba(255, 255, 255, 0.5), 
+        0 0 6px rgba(255, 255, 255, 0.3); /* Subtle glowing effect */
+}
+
+.line {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    transition: opacity 1s ease-in-out; /* Keep the existing transition effect */
+}
+
+.line br + span {
+    color: rgb(41, 250, 41); /* Text after <br> in green */
+}
+
+.line {
+    color: yellow; /* Text before <br> in yellow */
+}
+
+
+
+@keyframes pop-in {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pop-out {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.8); }
+}
+
+/* Pop-in effect */
+.lyrics .line {
+    animation: pop-in 1s ease-in-out forwards;
+}
+
+/* Hide lines initially */
+.lyrics .line {
+    animation: none;
+}
+
+.line:nth-child(1) {
+    animation: pop-in 1s ease-in-out forwards, pop-out 1s ease-in-out 30s forwards;
+}
+
+.line:nth-child(2) { animation: pop-in 2s ease-in-out 33s forwards, pop-out 1s ease-in-out 41.5s forwards; }
+.line:nth-child(3) { animation: pop-in 1s ease-in-out 42s forwards, pop-out 1s ease-in-out 48s forwards; }
+.line:nth-child(4) { animation: pop-in 1s ease-in-out 49s forwards, pop-out 1s ease-in-out 56s forwards; }
+.line:nth-child(5) { animation: pop-in 1s ease-in-out 57s forwards, pop-out 1s ease-in-out 60s forwards; }
+.line:nth-child(6) { animation: pop-in 1s ease-in-out 61s forwards, pop-out 1s ease-in-out 63s forwards; }
+.line:nth-child(7) { animation: pop-in 1s ease-in-out 64s forwards, pop-out 1s ease-in-out 66s forwards; }
+.line:nth-child(8) { animation: pop-in 1s ease-in-out 67s forwards, pop-out 1s ease-in-out 70s forwards; }
+.line:nth-child(9) { animation: pop-in 1s ease-in-out 87s forwards, pop-out 1s ease-in-out 93s forwards; }
+.line:nth-child(10) { animation: pop-in 1s ease-in-out 94s forwards, pop-out 1s ease-in-out 100s forwards; }
+.line:nth-child(11) { animation: pop-in 1s ease-in-out 101s forwards, pop-out 1s ease-in-out 105s forwards; }
+.line:nth-child(12) { animation: pop-in 1s ease-in-out 106s forwards, pop-out 1s ease-in-out 108s forwards; }
+.line:nth-child(13) { animation: pop-in 1s ease-in-out 109s forwards, pop-out 1s ease-in-out 112s forwards; }
+.line:nth-child(14) { animation: pop-in 1s ease-in-out 113s forwards, pop-out 1s ease-in-out 115s forwards; }
+.line:nth-child(15) { animation: pop-in 1s ease-in-out 116s forwards, pop-out 1s ease-in-out 120s forwards; }
+.line:nth-child(16) { animation: pop-in 1s ease-in-out 121s forwards, pop-out 1s ease-in-out 123s forwards; }
+
+/* Footer */
+footer {
+    background-color: #222; /* Dark background to match the theme */
+    color: #eee; /* Light text color for contrast */
+    padding: 20px;
+    text-align: center;
+    font-family: 'Arial', sans-serif; /* Consistent font with body */
+    border-top: 2px solid #f39c12; /* A border to give some separation */
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Footer Content */
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Footer Heading */
+footer h2 {
+    font-size: 1.5em;
+    color: #f39c12; /* Highlight color to match header */
+    margin-bottom: 10px;
+    font-family: 'Ewert', cursive; /* Match with song title font */
+}
+
+/* Footer Links */
+footer a {
+    color: #eef367; /* Light color to stand out against dark background */
+    text-decoration: none;
+    margin: 0 10px;
+    font-family: 'Permanent Marker', cursive; /* Match with lyrics font */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Underline on hover for better visibility */
+}
+
+/* Footer Paragraphs */
+footer p {
+    font-size: 1em;
+    margin: 10px 0;
+}
